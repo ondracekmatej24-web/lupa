@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Detektivní kancelář Lupa</title>
+<style>
+/* VOICE: hravá detektivka pro 12–13 let, napínavá, ale přátelská
+   IDEA: korková nástěnka detektivní kanceláře; případy jsou místnosti, kterými chodíš
+   PICTURE: herní mapa shora s postavičkami; v tvůrci velká živá postavička
+   COLOUR and TYPE: petrolejový stůl, korek, žlutý lísteček, bílý papír; Special Elite + Nunito
+   LAYOUT: jeden sloupec, hra přes celou šířku telefonu, na iPadu vejde na výšku i na šířku */
+:root{color-scheme:light dark;--bg:light-dark(#1d4a52,#0f2a30);--ink:light-dark(#1b1b1b,#ececec);--paper:light-dark(#ffffff,#1e2426);--paper2:light-dark(#f4f1ea,#262d30);--note:#ffd23f;--red:#d7263d;--muted:light-dark(#5b5b5b,#a9b1b4);--line:light-dark(#ddd6c8,#3a4447);--btn:light-dark(#1b1b1b,#ffd23f);--btnink:light-dark(#fff,#1b1b1b)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 Nunito,system-ui,sans-serif;overflow-x:clip;min-height:100vh;-webkit-tap-highlight-color:transparent}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--note);outline-offset:2px}
+.wrap{max-width:960px;margin:0 auto;padding:16px 14px 50px}
+.top{display:flex;align-items:center;gap:14px;color:#fff;margin:6px 0 18px}
+.top h1{font:400 clamp(28px,7vw,44px)/1.05 'American Typewriter','Courier New',monospace;margin:0;text-wrap:balance}
+.top p{margin:4px 0 0;color:#cfe3e6;font-size:15px}
+.logo{flex:none;width:60px;height:60px}
+/* tvůrce */
+.maker{display:grid;gap:16px;background:#f7f2e4;color:#1b1b1b;border-radius:12px;padding:18px;box-shadow:0 10px 24px #0005}
+.prev{display:grid;justify-items:center;gap:10px;background:repeating-linear-gradient(45deg,#e9e1cc 0 12px,#efe8d6 12px 24px);border-radius:10px;padding:14px}
+.prev canvas{width:180px;height:180px}
+.prev .tag{font:400 26px 'American Typewriter','Courier New',monospace;text-align:center;overflow-wrap:anywhere}
+.turn{background:#1b1b1b;color:#fff;border:0;border-radius:20px;padding:6px 14px;min-height:44px;font-weight:700}
+.nm{display:grid;gap:4px;font-weight:800}
+.nm input{font:700 20px Nunito;padding:10px 12px;border-radius:8px;border:2px solid #1b1b1b;min-height:50px;background:#fff;color:#1b1b1b;width:100%}
+.grp{display:grid;gap:6px}
+.grp>span{font-weight:800;font-size:15px}
+.sw{display:flex;flex-wrap:wrap;gap:8px}
+.sw button{width:44px;height:44px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px #0003}
+.sw button[aria-pressed=true]{box-shadow:0 0 0 3px #1b1b1b;transform:scale(1.1)}
+.sw .tx{width:auto;height:auto;min-height:44px;border-radius:22px;padding:6px 14px;background:#fff;color:#1b1b1b;font-weight:700;border:2px solid #1b1b1b;box-shadow:none}
+.sw .tx[aria-pressed=true]{background:#1b1b1b;color:#fff;transform:none}
+.mk-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+.go{background:var(--note);color:#1b1b1b;border:0;border-radius:30px;padding:14px 30px;font-weight:800;font-size:19px;min-height:52px;box-shadow:0 4px 0 #b8940f}
+.rnd{background:#fff;color:#1b1b1b;border:2px solid #1b1b1b;border-radius:30px;padding:10px 18px;font-weight:700;min-height:48px}
+.err{color:var(--red);font-weight:700;min-height:1.4em;margin:0;font-size:15px}
+/* nástěnka */
+.board{background:repeating-radial-gradient(circle at 30% 20%,#b98a55 0 3px,#a77745 3px 5px);border:12px solid #6b4423;border-radius:10px;padding:26px 18px 30px;box-shadow:0 14px 30px #0006,inset 0 0 30px #0004}
+.cases{display:grid;gap:34px;position:relative}
+.cases::before{content:"";position:absolute;left:50%;top:30px;bottom:30px;border-left:3px solid var(--red)}
+.file{position:relative;background:#f7f2e4;color:#1b1b1b;border:0;border-radius:4px;padding:20px 18px 16px;text-align:left;box-shadow:0 6px 14px #0005;width:100%;max-width:420px;justify-self:center}
+.file:nth-child(1){transform:rotate(-2deg)}.file:nth-child(2){transform:rotate(1.5deg)}.file:nth-child(3){transform:rotate(-1deg)}
+.file::before{content:"";position:absolute;top:-9px;left:50%;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff6b7d,var(--red) 60%,#7a0f1d);box-shadow:0 3px 4px #0006}
+.file .n{font:400 14px 'American Typewriter','Courier New',monospace;color:#7a5a2e}
+.file h2{font:400 24px/1.1 'American Typewriter','Courier New',monospace;margin:4px 0 6px}
+.file .d{font-size:15px;color:#555;margin:0}
+.file .st{margin-top:8px;font-size:22px;letter-spacing:3px;color:#c99a00}
+.file:disabled{filter:grayscale(1) brightness(.75);cursor:not-allowed}
+.lock{position:absolute;right:14px;top:14px;font:700 13px Nunito;background:#333;color:#fff;padding:3px 9px;border-radius:20px}
+.stamp{position:absolute;right:12px;bottom:12px;border:3px solid var(--red);color:var(--red);font:400 16px 'American Typewriter','Courier New',monospace;padding:2px 8px;transform:rotate(-12deg);border-radius:4px;opacity:.85}
+.foot{color:#cfe3e6;font-size:15px;text-align:center;margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center}
+.foot p{width:100%;margin:0}
+.ghost{background:none;border:1px solid #cfe3e6;color:#cfe3e6;border-radius:22px;padding:8px 16px;min-height:44px}
+.hero{display:flex;align-items:center;gap:10px;justify-content:center;width:100%}
+.hero canvas{width:56px;height:56px;background:#ffffff22;border-radius:50%}
+/* hra */
+.bar{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.bar h2{flex:1 1 0;color:#fff;font:400 clamp(16px,4vw,28px)/1.1 'American Typewriter','Courier New',monospace;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .pill{flex:none;padding:9px 13px}
+.pill{background:var(--note);color:#1b1b1b;border:0;border-radius:24px;padding:9px 16px;font-weight:800;min-height:44px}
+.pill.w{background:#fff}
+.pill.s{background:#ffffff22;color:#fff;font-weight:700}
+.game{position:relative;margin:0 auto;width:100%;height:calc(100vh - 220px);height:calc(100dvh - 220px);min-height:340px;max-height:860px;border-radius:10px;overflow:hidden;background:#111;box-shadow:0 10px 24px #0006}
+#three,#three canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#mini{position:absolute;top:8px;right:8px;width:120px;height:90px;border-radius:6px;border:2px solid #ffffffaa;pointer-events:none;background:#0006}
+.cross{position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px;border-radius:50%;background:#fffc;box-shadow:0 0 0 2px #0006;pointer-events:none}
+.cross[hidden]{display:none}
+.joy{position:absolute;width:110px;height:110px;border-radius:50%;background:#ffffff22;border:2px solid #ffffff88;pointer-events:none}
+.joy[hidden]{display:none}
+.knob{position:absolute;left:30px;top:30px;width:50px;height:50px;border-radius:50%;background:#ffffffcc;box-shadow:0 2px 6px #0006}
+.joyhint{position:absolute;left:16px;bottom:16px;width:100px;height:100px;border-radius:50%;border:2px dashed #ffffffaa;color:#fff;font-size:13px;font-weight:700;display:grid;place-items:center;text-align:center;pointer-events:none;text-shadow:0 1px 3px #000}
+.toast{position:absolute;left:50%;top:14px;transform:translateX(-50%);background:#1b1b1bdd;color:#fff;padding:8px 16px;border-radius:20px;font-weight:700;pointer-events:none}
+.toast[hidden]{display:none}
+.tools{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.tools .pill{font-size:14px;padding:8px 12px}
+.sheetmsg{background:var(--paper);border-radius:10px;padding:24px}
+.act{display:block;width:100%;margin:10px auto 0;border:0;border-radius:12px;padding:12px;font-weight:800;font-size:18px;min-height:54px;background:var(--red);color:#fff}
+.act:disabled{background:#ffffff22;color:#e6f0f1;cursor:default;font-weight:700;font-size:16px}
+.dlg{position:absolute;left:8px;right:8px;bottom:8px;background:var(--paper);color:var(--ink);border-radius:10px;padding:14px 16px;box-shadow:0 8px 20px #0008;border:3px solid #1b1b1b;max-height:calc(100% - 16px);overflow:auto;animation:up .2s}
+.dlg[hidden]{display:none}
+.dlg b.h{font:400 20px 'American Typewriter','Courier New',monospace;display:block}
+.dlg p{margin:6px 0 10px}
+.dlg .me{color:var(--muted);font-style:italic}
+.btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.btn{background:var(--btn);color:var(--btnink);border:0;border-radius:8px;padding:10px 18px;font-weight:800;min-height:46px}
+.qs{display:grid;gap:6px;margin-bottom:8px}
+.qb{background:var(--paper2);color:var(--ink);border:2px solid var(--line);border-radius:8px;padding:9px 12px;text-align:left;font-weight:700;min-height:46px}
+.qb.done{color:var(--muted);font-weight:400}
+.qb.hot{border-color:var(--red);background:light-dark(#fff0f1,#3a1c20)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row input{flex:1 1 140px;font:700 18px Nunito;padding:10px 12px;border-radius:8px;border:2px solid #1b1b1b;min-height:48px;background:#fff;color:#1b1b1b}
+.msg{font-weight:700;min-height:1.4em;margin-top:6px}
+.modal{position:fixed;inset:0;background:#000a;display:grid;place-items:center;padding:14px;z-index:9}
+.modal[hidden]{display:none}
+.box{background:var(--paper);color:var(--ink);border-radius:10px;max-width:540px;width:100%;max-height:calc(100dvh - 28px);overflow:auto;padding:20px;box-shadow:0 20px 40px #0008;animation:pop .25s}
+.box h2{font:400 28px/1.1 'American Typewriter','Courier New',monospace;margin:0 0 8px}
+.box h3{font:400 19px 'American Typewriter','Courier New',monospace;margin:16px 0 6px}
+.box ul{margin:0;padding-left:20px}.box li{margin:4px 0}
+.box li ul{font-size:15px;color:var(--muted)}
+.box .big{font-size:40px;color:#e0a800;letter-spacing:6px;text-align:center}
+.empty{color:var(--muted);margin:0}
+.acc{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.acc button{background:var(--red);color:#fff;border:0;border-radius:10px;padding:12px;font-weight:800;min-height:52px}
+.acc button:disabled{opacity:.4;cursor:not-allowed}
+.hintb{background:none;border:2px solid var(--ink);color:var(--ink);border-radius:22px;padding:8px 14px;min-height:44px;font-weight:700}
+.end{display:flex;justify-content:flex-end;margin-top:14px}
+@media(min-width:700px){.maker{grid-template-columns:260px minmax(0,1fr);align-items:start}.prev{position:sticky;top:12px}}
+@media(min-width:768px){.cases{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.cases::before{left:30px;right:30px;top:50%;bottom:auto;border-left:0;border-top:3px solid var(--red)}}
+@keyframes pop{from{transform:scale(.85);opacity:0}}
+@keyframes up{from{transform:translateY(20px);opacity:0}}
+@media(prefers-reduced-motion:reduce){.box,.dlg{animation:none}}
+.pv3{position:relative;width:100%;aspect-ratio:1;max-width:340px;border-radius:10px;overflow:hidden}
+.prev{background:#e9e1cc}
+.cases-m{display:grid;gap:16px;margin:10px 0}
+.cases-m .file{max-width:none;transform:none}
+.cases-m .file::before{display:none}
+@media(min-width:700px){.maker{grid-template-columns:340px minmax(0,1fr)}}
+
+.wrap{padding-top:max(16px,env(safe-area-inset-top));padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env(safe-area-inset-right))}
+@media (orientation:landscape) and (max-height:560px){
+ body:has(#game){overflow:hidden}
+ .game{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-height:none;min-height:0;border-radius:0;z-index:1;box-shadow:none}
+ .bar{position:fixed;top:max(8px,env(safe-area-inset-top));left:max(10px,env(safe-area-inset-left));right:max(10px,env(safe-area-inset-right));z-index:3;margin:0;pointer-events:none}
+ .bar>*{pointer-events:auto}.bar h2{visibility:hidden}
+ .act{position:fixed;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));width:auto;min-width:220px;max-width:320px;z-index:3;margin:0;box-shadow:0 4px 12px #0006}
+ .act:disabled{display:none}
+ .tools{position:fixed;top:max(8px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:3;margin:0;flex-wrap:nowrap}
+ .tools .pill{background:#0008;font-size:13px;padding:6px 10px;min-height:36px}
+ #mini{top:auto;bottom:max(12px,env(safe-area-inset-bottom));right:auto;left:50%;transform:translateX(-50%);width:100px;height:75px}
+ .dlg{left:max(8px,env(safe-area-inset-left));right:max(8px,env(safe-area-inset-right));bottom:8px;max-height:70%}
+ .joyhint{left:max(20px,env(safe-area-inset-left))}
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"><p style="color:#fff">Načítám hru…</p></div>
+<div class="modal" id="modal" hidden><div class="box" id="box"></div></div>
+<script src="three.min.js"></script>
+<script src="RoomEnvironment.js"></script>
+<script src="RoundedBoxGeometry.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
