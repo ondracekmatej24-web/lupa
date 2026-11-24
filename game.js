@@ -64,7 +64,100 @@ items:[{n:"Šroubovák",c:"Na šroubováku je oranžový lak na nehty. Ten nosí
 {n:"Docházka",c:"Všichni čtyři odešli mezi 16:00 a 16:10.",sh:"paper",x:1,y:10}],
 puz:{n:"Učitelův stůl",sh:"desk",x:13,y:9,q:"Šuplík je zamčený. Kód je číslo, které je dvakrát větší než 12 a zároveň o 3 menší než 27. Jaký je kód?",a:["24"],r:"V šuplíku je vzkaz od učitele: „Vím jistě, že ze čtyř vět je pravdivá každá kromě JEDNÉ. Lže jen jeden!“"},
 cul:0,hint:"Zkus předpokládat, že viníkem je každý z nich postupně. Spočítej, kolik vět by pak bylo lživých. Správně je to jen tehdy, když lže jen jeden.",
-why:"Kdyby to byl Filip, lhali by Filip i Sofie. Kdyby Sofie nebo David, lhali by Klára i David. Jen když je viník Klára, lže jediná osoba: Klára sama. Oranžový lak to potvrzuje."}];
+why:"Kdyby to byl Filip, lhali by Filip i Sofie. Kdyby Sofie nebo David, lhali by Klára i David. Jen když je viník Klára, lže jediná osoba: Klára sama. Oranžový lak to potvrzuje."},
+{t:"Zmizelé housle",place:"Hudební škola, koncertní sál",d:"Spis Stínu 1",
+th:{f:"wood",tint:"#c49a6c",wall:"#7a2e3a",cap:"#2e1a1f",rug:"#7a1f2b"},
+map:["################","#FF..SSSS....FF#","#..............#","#..CCCCCCCC....#","#..............#","#..TT..TT..TT..#","#..............#","#..TT..TT..TT..#","#..............#","#.P..........P.#","#..............#","#######..#######"],
+start:[7,10],
+intro:"Z koncertního sálu zmizely vzácné školní housle! Stalo se to o přestávce zkoušky mezi 17:00 a 17:15, kdy na chvíli zhasla světla. Na místě činu někdo nechal záhadnou černou kartu. Kdo housle vzal?",
+sus:[{n:"Lucie",r:"houslistka",v:390,hi:"Ahoj, detektive {jm}. To je hrozné, ty housle jsou nejlepší ve škole!",s:"Celou přestávku jsem cvičila ve zkušebně číslo 2.",shirt:"#e84a5f",hair:"#3b2a1a",hs:"long",x:2,y:2,
+  q:[["Kdo by ty housle chtěl?","Na soutěž by je chtěl každý. Já taky... ale já mám svoje."],["Slyšela jsi něco, když zhasla světla?","Ne, ve zkušebně je ticho. Cvičila jsem."]],
+  cf:[1,"Zkušebna 2 byla od 17:00 do 17:20 zamčená kvůli malování!","Zamčená? Aha... tak jsem asi cvičila na chodbě. Nevím přesně!"]},
+{n:"Pan Dvořák",r:"správce budovy",adult:1,v:160,hi:"Dobrý den. Tolik práce a teď ještě tohle.",s:"Když zhasla světla, šel jsem do sklepa opravit pojistky.",shirt:"#4a5a6a",hair:"#888888",hs:"cap",cap:"#2f3b45",beard:1,x:13,y:4,
+  q:[["Jak dlouho vám oprava trvala?","Asi deset minut. Všechno jsem zapsal do knihy údržby."],["Kdo má klíč od sálu?","Já a všichni učitelé. Ale o přestávce byl sál otevřený."]]},
+{n:"Ondra",r:"bubeník",v:210,hi:"Čau! Já jsem byl úplně jinde.",s:"O přestávce jsem byl v bufetu v druhé budově a kupoval jsem si limonádu.",shirt:"#2b7de9",hair:"#d4a017",hs:"spiky",x:6,y:8,
+  q:[["Jak daleko je bufet?","V druhé budově, pěšky asi deset minut."],["Viděl jsi Lucii?","Jo, šla po chodbě směrem k sálu, když jsem odcházel."]]}],
+items:[{n:"Kniha údržby",c:"Pan Dvořák opravil pojistky ve sklepě v 17:11. Podepsal to i elektrikář.",sh:"book",x:1,y:6},
+{n:"Rozpis zkušeben",c:"Zkušebna 2: od 17:00 do 17:20 ZAMČENO – malování.",sh:"paper",x:14,y:2},
+{n:"Účtenka z bufetu",c:"Limonáda, zaplaceno v 17:09. Bufet je v druhé budově, deset minut chůze.",sh:"paper",x:10,y:9}],
+puz:{n:"Skříň na noty",sh:"locker",x:14,y:7,q:"Na skříni je lísteček: „Kód = počet strun na houslích krát počet nohou u stolu.“ Jaký je kód?",a:["16"],r:"Ve skříni jsou ukradené housle! A na nich černá karta s písmenem M a vzkazem: „Díky za pomoc. – Stín“."},
+cul:0,hint:"Kdo tvrdí, že byl na místě, které bylo ve skutečnosti zamčené?",
+why:"Lucie tvrdila, že cvičila ve zkušebně 2, ale ta byla zamčená kvůli malování. Ondra byl v bufetu v jiné budově a pan Dvořák opravoval pojistky. Lucie schovala housle do skříně, protože jí někdo, kdo si říká Stín, slíbil výhru v soutěži. Stín nám nechal první písmeno: M."},
+{t:"Vykradená cukrárna",place:"Cukrárna U Zlatého rohlíku",d:"Spis Stínu 2",
+th:{f:"tiles",wall:"#f1e3c8",cap:"#5a3e2b",rug:"#c4762b"},
+map:["################","#KKKKKK...SSSS.#","#..............#","#..............#","#.TTT.....CCC..#","#..............#","#..............#","#....rrrrrr....#","#....rrrrrr....#","#.P.........P..#","#..............#","#######..#######"],
+start:[7,10],
+intro:"Z cukrárny zmizela pokladna s penězi za celý týden! Stalo se to ráno mezi 7:00 a 7:30, ještě než se otevřelo. Na místě po pokladně ležela další černá karta. Stín je zpátky!",
+sus:[{n:"Jirka",r:"pekař",adult:1,v:170,hi:"Dobrý den, detektive. Celé ráno jsem u pece!",s:"Od pěti ráno peču vzadu u pece. Pec hučí, nic jsem neslyšel.",shirt:"#f1f1f1",hair:"#3b2a1a",hs:"short",beard:1,x:3,y:2,
+  q:[["Jakou máte velikost bot?","Pětačtyřicítky! Obří pekařské boty."],["Kdo dneska ráno přišel?","Tomáš pro rohlíky. A myslím, že někdo vešel zadními dveřmi."]]},
+{n:"Šárka",r:"prodavačka",adult:1,v:360,hi:"Dobrý den. Já jsem přišla až po tom všem.",s:"Přišla jsem až v 7:40, jako každý den. To už byla pokladna pryč.",shirt:"#e84a5f",hair:"#c0392b",hs:"pony",x:12,y:5,
+  q:[["Jakou máš velikost bot?","To je moje věc... No dobře, osmatřicítky."],["Čím jezdíš do práce?","Autobusem. Zastávka U Cukrárny je hned před vchodem."]],
+  cf:[2,"Tahle jízdenka je označená v 7:05 na zastávce U Cukrárny!","To... to nemusí být moje jízdenka! Tu mohl ztratit kdokoli!"]},
+{n:"Tomáš",r:"rozvozce",adult:1,v:200,hi:"Ahoj! Musím rychle rozvážet, tak se ptej.",s:"V 7:15 jsem tu vyzvedl rohlíky a odvezl je do školy.",shirt:"#2f9e44",hair:"#1b1b1b",hs:"cap",cap:"#ffd23f",x:8,y:5,
+  q:[["Jakou máš velikost bot?","Dvaačtyřicítky."],["Viděl jsi někoho u cukrárny?","Kolem sedmé vystupovala z autobusu holka s červenými vlasy."]]}],
+items:[{n:"Moučné stopy",c:"Bílé stopy od mouky vedou od pokladny k zadním dveřím. Velikost bot: 38.",sh:"prints",x:7,y:3},
+{n:"Rozpis směn",c:"Jirka: od 5:00. Tomáš: rozvoz v 7:15. Šárka: od 7:40.",sh:"paper",x:14,y:2},
+{n:"Jízdenka na zemi",c:"Jízdenka na autobus označená v 7:05 na zastávce U Cukrárny.",sh:"paper",x:2,y:7}],
+puz:{n:"Pokladní šuplík",sh:"register",x:13,y:3,q:"Šuplík na drobné má zámek a vzkaz: „Kód = kolik minut má půl hodiny + v kolik hodin ráno otevíráme (v 7).“ Jaký je kód?",a:["37"],r:"V šuplíku leží černá karta s písmenem L a vzkazem: „Sladké díky. – Stín“."},
+cul:1,hint:"Porovnej velikost bot ze stop s odpověďmi podezřelých. A kdo opravdu přijel kolem sedmé?",
+why:"Stopy od mouky měly velikost 38 a tu má jen Šárka. Tvrdila, že přišla až v 7:40, ale Tomáš viděl holku s červenými vlasy vystupovat z autobusu kolem sedmé a jízdenka byla označená v 7:05. Šárka odnesla pokladnu zadními dveřmi pro Stína. Druhé písmeno: L."},
+{t:"Ztracený atlas",place:"Městská knihovna",d:"Spis Stínu 3",
+th:{f:"wood",tint:"#8a6040",wall:"#3f5a4a",cap:"#1f2b24",rug:"#6b2a2a"},
+map:["################","#SSSS.SSSS.SSSS#","#..............#","#.SS..SS..SS...#","#..............#","#.SS..SS..SS...#","#..............#","#...TTTT.......#","#...TTTT...CC..#","#..........P...#","#..............#","#######..#######"],
+start:[7,10],
+intro:"Z trezoru v knihovně zmizel 300 let starý atlas světa! V 18:00 na pět minut vypadl proud. Elektronický zámek zaznamenal, že se trezor otevřel v 18:02 kartou číslo 2. A v trezoru ležela černá karta Stína.",
+sus:[{n:"Paní Horáková",r:"knihovnice",adult:1,v:340,hi:"Dobrý den. Ten atlas je náš největší poklad!",s:"Když vypadl proud, stála jsem u pultu a volala elektrikáři.",shirt:"#9b4dca",hair:"#c9c9c9",hs:"long",glasses:1,x:12,y:7,
+  q:[["Kdo má karty od trezoru?","Kartu číslo 1 mám já. Kartu číslo 2 má Matyáš, pomáhá nám tady jako dobrovolník."],["Kdo tu dnes byl?","Matyáš a pan Kos. Ten tu čte každý den v čítárně."]]},
+{n:"Matyáš",r:"dobrovolník",v:230,hi:"Ahoj! Já jsem to nebyl, přísahám!",s:"Svoji kartu číslo 2 jsem včera ztratil. Hned jsem to nahlásil.",shirt:"#12b886",hair:"#6b4423",hs:"short",glasses:1,x:2,y:9,
+  q:[["Kde jsi kartu ztratil?","Asi v čítárně. Seděl jsem vedle pana Kose."],["Kde jsi byl v 18:02?","Řadil jsem knížky tady vzadu. Ve tmě jsem se nemohl ani hnout."]]},
+{n:"Pan Kos",r:"čtenář",adult:1,long:1,v:150,hi:"Hm? Rušíte mě při čtení.",s:"Celý večer jsem seděl v čítárně a vůbec jsem ji neopustil.",shirt:"#3b3b3b",hair:"#1b1b1b",hs:"short",x:9,y:8,
+  q:[["Co jste četl?","Knihu o mapách. Staré mapy jsou moje vášeň."],["Neviděl jste kartu od trezoru?","Kartu? Žádnou kartu jsem neviděl. Proč se ptáte?"]],
+  cf:[1,"Kamera v čítárně ukazuje, že v 18:01 byla vaše židle prázdná!","Já... já jsem si jen došel pro vodu. Ve tmě!"]}],
+items:[{n:"Kniha ztrát a nálezů",c:"Matyáš nahlásil ztrátu karty číslo 2 včera v 16:00, v čítárně.",sh:"book",x:5,y:2},
+{n:"Záznam z kamery",c:"Čítárna, 18:01: židle pana Kose je prázdná, visí na ní jen jeho deštník.",sh:"photo",x:14,y:4},
+{n:"Výpis z telefonu",c:"Telefon u pultu: hovor s elektrikářem od 17:59 do 18:06.",sh:"paper",x:13,y:10}],
+puz:{n:"Trezor",sh:"locker",x:8,y:4,q:"Na trezoru je vzkaz z čísel: 19 – 20 – 9 – 14. Každé číslo je pořadí písmene v abecedě (A=1, B=2…). Jaké slovo to je?",a:["stin","stín"],r:"Slovo je STÍN! V trezoru leží černá karta s písmenem H. Stín si s námi hraje."},
+cul:2,hint:"Kdo mohl mít kartu číslo 2? A kdo lže o tom, kde byl v 18:02?",
+why:"Pan Kos tvrdil, že čítárnu neopustil, ale kamera ukázala jeho prázdnou židli v 18:01. Matyáš kartu ztratil včera v čítárně, kde seděl vedle pana Kose, a ten si ji nechal. Paní Horáková celou dobu telefonovala. Pan Kos otevřel trezor ztracenou kartou pro Stína. Třetí písmeno: H."},
+{t:"Ukradený pohár",place:"Sportovní hala",d:"Spis Stínu 4",
+th:{f:"lino",wall:"#dfe6ec",cap:"#2f3b45",rug:"#d9783a"},
+map:["################","#SS...VVV....PP#","#..............#","#..............#","#..rrrrrrrrrr..#","#..rrrrrrrrrr..#","#..rrrrrrrrrr..#","#..............#","#.TTT......TTT.#","#..............#","#..............#","#######..#######"],
+start:[7,10],
+intro:"Před finálovým zápasem zmizel z vitríny zlatý pohár! Alarm vitríny zaznamenal otevření v 15:20. Kdo má na tu dobu alibi a kdo lže? A ano, ve vitríně ležela černá karta.",
+sus:[{n:"Nikola",r:"kapitánka týmu",v:370,hi:"Ahoj. Bez poháru nemůžeme ani slavit!",s:"V 15:20 jsem byla v dívčí šatně a převlékala se na zápas.",shirt:"#d7263d",hair:"#e8b923",hs:"pony",x:5,y:3,
+  q:[["Viděla jsi v šatně někoho?","Ne, byla jsem tam úplně sama."],["Chceš vyhrát finále?","Jasně! Někdo mi slíbil, že vyhrajeme... teda, že budeme mít štěstí."]],
+  cf:[2,"Uklízečka v 15:20 uklízela dívčí šatnu a nikdo tam nebyl!","No... možná jsem byla na chodbě. Nebo na záchodě. Nepamatuju si to!"]},
+{n:"Trenér Holub",r:"trenér",adult:1,v:170,hi:"Zdravím, detektive. Tohle je ostuda!",s:"Od 15:00 do 15:30 jsem měl poradu s panem ředitelem.",shirt:"#1971c2",hair:"#6b4423",hs:"short",x:12,y:3,
+  q:[["O čem byla porada?","O finále. Ředitel všechno zapisuje, můžeš si to přečíst."],["Kdo má klíč od vitríny?","Já. A náhradní klíč je zamčený ve skříňce u zdi."]]},
+{n:"Jakub",r:"maskot týmu",v:240,hi:"Čauky! Já jsem ten medvěd, co tancuje!",s:"V 15:20 jsem v kostýmu medvěda tancoval na hřišti pro diváky.",shirt:"#8a5a2b",hair:"#3b2a1a",hs:"short",x:7,y:7,
+  q:[["Viděl tě někdo?","Všichni! Fanoušci si mě fotili."],["Neviděl jsi u vitríny někoho?","Z kostýmu toho moc nevidím. Ale někdo se tam mihl s blond culíkem."]]}],
+items:[{n:"Fotka od fanoušků",c:"Fotka z 15:20: medvěd Jakub tancuje uprostřed hřiště.",sh:"photo",x:2,y:7},
+{n:"Zápis z porady",c:"Porada 15:00–15:30: ředitel a trenér Holub. Podepsáno oběma.",sh:"paper",x:14,y:9},
+{n:"Kniha úklidu",c:"15:15–15:30 úklid dívčí šatny. Nikdo tam nebyl.",sh:"book",x:8,y:2}],
+puz:{n:"Skříňka s náhradním klíčem",sh:"locker",x:1,y:5,q:"Zámek skříňky má vzkaz: „Kód = počet hráčů jednoho fotbalového týmu na hřišti krát 2.“ Jaký je kód?",a:["22"],r:"Náhradní klíč od vitríny chybí! Místo něj ve skříňce leží černá karta s písmenem A."},
+cul:0,hint:"Ověř si alibi všech tří. Kdo byl v 15:20 na místě, kde ho nikdo neviděl?",
+why:"Trenér Holub měl poradu s ředitelem a medvěda Jakuba fotili fanoušci na hřišti. Nikola tvrdila, že byla v šatně, ale tu v tu dobu uklízela uklízečka a nikdo tam nebyl. Jakub navíc viděl u vitríny blond culík. Nikola vzala náhradní klíč a pohár pro Stína, protože jí slíbil výhru. Čtvrté písmeno: A."},
+{t:"Stínova skrýš",place:"Stará továrna na okraji města",d:"Velké finále",
+th:{f:"lino",wall:"#8a8f94",cap:"#2b2f33",rug:"#5a4a3a",brick:1},
+map:["################","#XX..KKKK...XXX#","#X.............#","#....XX...XX...#","#..............#","#..TTT.....TT..#","#..............#","#.XX.....XX....#","#..............#","#....rrrr......#","#..............#","#######..#######"],
+start:[7,10],
+intro:"Stín poslal inspektoru Lupovi dopis: „Chyťte mě, jestli to dokážete. Čekám ve staré továrně.“ Máš všechny černé karty, které Stín nechal: M, L, H a A. V továrně jsou čtyři lidé a jeden z nich je Stín v přestrojení!",
+sus:[{n:"Rudolf",r:"hlídač",adult:1,v:150,hi:"Hlídám tu dvacet let. Cizí sem nesmí!",s:"Znám tu každý šroubek. Celý den jsem byl na vrátnici.",shirt:"#4a5a6a",hair:"#c9c9c9",hs:"cap",cap:"#1b1b1b",beard:1,x:2,y:4,
+  q:[["Kdo sem v poslední době chodí?","Paní Zora krmí kočky a od minulého týdne tu fotí nějaký Erik."],["Znáte jméno Mlha?","Mlhu? Tu tady máme každé ráno, ha ha."]]},
+{n:"Erik",r:"fotograf",adult:1,long:1,v:190,hi:"Dobrý den, mladý detektive. Jsem tu jen kvůli fotkám.",s:"Fotím starou továrnu do knihy. Jsem tu teprve týden.",shirt:"#2f9e44",hair:"#3b2a1a",hs:"short",glasses:1,x:8,y:4,
+  q:[["Jakou rukou fotíte?","Pravou, jako každý."],["Máte rád bonbony?","Ne, sladké vůbec nejím."]],
+  cf:[1,"Na zaprášeném stole vedle vašeho foťáku je otisk LEVÉ ruky!","...Bystré. Velmi bystré. Lupa si vybral dobře."]},
+{n:"Paní Zora",r:"sousedka",adult:1,v:330,hi:"Ahoj, zlatíčko. Hledáš moje kočičky?",s:"Chodím sem každý den krmit toulavé kočky.",shirt:"#ae3ec9",hair:"#9a9a9a",hs:"long",x:13,y:6,
+  q:[["Viděla jste tu něco divného?","Ten fotograf pořád cucá mátové bonbony. Kočky ten pach nesnáší."],["Jak dlouho sem chodíte?","Už pět let. Kočky mě znají."]]},
+{n:"Leo",r:"pošťák",adult:1,v:210,hi:"Čau! Nemáš tu náhodou pana Mlhu?",s:"Nesu dopis pro pana Roberta Mlhu, ale nikdo takový tu nebydlí.",shirt:"#1971c2",hair:"#d4a017",hs:"cap",cap:"#d7263d",x:5,y:8,
+  q:[["Komu je ten dopis?","Robertu Mlhovi, Stará továrna. Zvláštní adresa."],["Odkud ten dopis je?","Z policejního archivu. Asi nějaký starý spis."]]}],
+items:[{n:"Obal od bonbonů",c:"Prázdný obal od mátových bonbonů. Leží hned vedle Erikovy brašny na foťák.",sh:"paper",x:10,y:6},
+{n:"Zaprášený stůl",c:"V prachu na stole je čerstvý otisk LEVÉ ruky. Vedle leží Erikův foťák.",sh:"desk",x:12,y:8},
+{n:"Seznam návštěv",c:"Erik: první návštěva před týdnem. Ve stejném týdnu začala zmizení s černými kartami.",sh:"book",x:14,y:4}],
+puz:{n:"Zamčené dveře kanceláře",sh:"locker",x:14,y:9,q:"Na dveřích je písmenkový zámek a vzkaz: „Moje jméno složíš z karet, které jsem ti nechával.“ Jaké je to slovo?",a:["mlha"],r:"Dveře se otevřely! Uvnitř je starý spis: Robert Mlha, bývalý parťák inspektora Lupy. Poznávací znamení: je levák, nosí něco zeleného a miluje mátové bonbony."},
+cul:1,hint:"Co víš o Robertu Mlhovi ze spisu za zamčenými dveřmi? Kdo z podezřelých má stejná znamení?",
+why:"Erik je ve skutečnosti Robert Mlha, tajemný Stín! Je levák (otisk levé ruky), nosí zelené tričko a jeho obal od mátových bonbonů ležel vedle brašny, i když tvrdil, že sladké nejí. Do továrny začal chodit přesně v týdnu, kdy začala zmizení. Všechny ukradené věci se vrátí majitelům a Stín je dopadený!"}
+];
 /* zvuky */
 let AC=null;
 function ac(){if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)()}catch(e){AC=null}}if(AC&&AC.state==='suspended')AC.resume().catch(()=>{});return AC}
@@ -90,9 +183,9 @@ const SKIN=OPT.skin;
 const $=s=>document.querySelector(s);
 const app=$('#app'),modal=$('#modal'),box=$('#box');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let stars=[0,0,0],ME=null,G=null,muted=false,voiceOn=true,camMode='fp',greeted=false;
+let stars=CASES.map(()=>0),ME=null,G=null,muted=false,voiceOn=true,camMode='fp',greeted=false;
 const okCol=v=>typeof v==='string'&&/^#[0-9a-f]{6}$/i.test(v);
-try{const v=JSON.parse(localStorage.getItem('lupa-stars'));if(Array.isArray(v)&&v.length===3)stars=v.map(n=>+n||0);
+try{const v=JSON.parse(localStorage.getItem('lupa-stars'));if(Array.isArray(v))stars=CASES.map((_,i)=>+v[i]||0);
   const h=JSON.parse(localStorage.getItem('lupa-hero'));
   if(h&&typeof h.n==='string'&&h.n.trim()&&['skin','hair','shirt','pants','cap'].every(k=>okCol(h[k]))&&OPT.hs.some(o=>o[0]===h.hs))ME={n:h.n.slice(0,14),skin:h.skin,hair:h.hair,hs:h.hs,shirt:h.shirt,pants:h.pants,cap:h.cap,glasses:!!h.glasses};
   muted=localStorage.getItem('lupa-mute')==='1';voiceOn=localStorage.getItem('lupa-voice')!=='0';camMode=localStorage.getItem('lupa-cam')==='tp'?'tp':'fp'}catch(e){}
@@ -140,7 +233,7 @@ const weave=()=>once('weave',()=>{const t=ctex(128,128,(c,w,h)=>{seed=21;c.fillS
 const hairT=()=>once('hair',()=>{const t=ctex(256,256,(c,w,h)=>{seed=31;c.fillStyle='#dcdcdc';c.fillRect(0,0,w,h);for(let i=0;i<900;i++){const x=rnd()*w;c.strokeStyle=rnd()<.5?`rgba(0,0,0,${.08+rnd()*.18})`:`rgba(255,255,255,${.1+rnd()*.25})`;c.lineWidth=.6+rnd()*1.2;c.beginPath();c.moveTo(x,0);c.bezierCurveTo(x+rnd()*10-5,h*.3,x+rnd()*10-5,h*.7,x+rnd()*8-4,h);c.stroke()}});t.wrapS=t.wrapT=THREE.RepeatWrapping;return t});
 const fabric=col=>MAT['f'+col]||(MAT['f'+col]=new THREE.MeshStandardMaterial({color:col,map:weave(),roughness:.92,envMapIntensity:.35}));
 const skinM=col=>MAT['s'+col]||(MAT['s'+col]=new THREE.MeshStandardMaterial({color:new THREE.Color(col).offsetHSL(0,.12,-.04),roughness:.72,envMapIntensity:.12,emissive:new THREE.Color(col).multiplyScalar(.07)}));
-const hairM=col=>MAT['h'+col]||(MAT['h'+col]=new THREE.MeshStandardMaterial({color:col,map:hairT(),roughness:.4,envMapIntensity:.8}));
+const hairM=col=>MAT['h'+col]||(MAT['h'+col]=new THREE.MeshStandardMaterial({color:col,map:hairT(),roughness:.55,envMapIntensity:.3}));
 const solid=(col,r,m)=>{const k='c'+col+r+m;return MAT[k]||(MAT[k]=new THREE.MeshStandardMaterial({color:col,roughness:r==null?.6:r,metalness:m||0}))};
 
 /* hlava */
@@ -243,11 +336,11 @@ function markT(txt,npc){return once('mk'+txt,()=>ctex(128,128,c=>{const g=c.crea
   c.fillStyle=lg(c,0,30,0,98,npc?['#ffffff','#d9dfe4']:['#ffe27a','#e0aa00']);c.beginPath();c.arc(64,64,30,0,7);c.fill();c.lineWidth=4;c.strokeStyle='rgba(0,0,0,.6)';c.stroke();c.fillStyle='#1b1b1b';c.font='800 42px Nunito,sans-serif';c.textAlign='center';c.textBaseline='middle';c.fillText(txt,64,67)}))}
 function nameT(n){return ctex(256,64,c=>{c.font='800 30px Nunito,sans-serif';const w=Math.min(250,c.measureText(n).width+30);c.fillStyle='rgba(15,20,25,.75)';rr(c,128-w/2,8,w,46,23);c.fillStyle='#fff';c.textAlign='center';c.textBaseline='middle';c.fillText(n,128,32)})}
 function corkT(){return ctex(1024,640,(c,w,h)=>{seed=12;c.fillStyle='#b58a5a';c.fillRect(0,0,w,h);for(let i=0;i<30000;i++){c.fillStyle=rnd()<.5?`rgba(90,55,25,${rnd()*.35})`:`rgba(230,200,150,${rnd()*.3})`;c.fillRect(rnd()*w,rnd()*h,2+rnd()*2,2+rnd()*2)}
-  const pts=[];CASES.forEach((cs,i)=>{const x=110+i*300,y=150+(i%2)*120;pts.push([x+110,y+20]);c.save();c.translate(x+110,y+120);c.rotate((i-1)*.05);c.fillStyle='rgba(0,0,0,.3)';c.fillRect(-104,-96,216,206);c.fillStyle='#f3ecd9';c.fillRect(-110,-100,220,200);
-    c.fillStyle='#7a5a2e';c.font='700 22px monospace';c.textAlign='center';c.fillText('SPIS '+(i+1),0,-60);c.fillStyle='#1b1b1b';c.font='700 26px serif';c.fillText(cs.t,0,-20);c.fillStyle='#c99a00';c.font='34px serif';c.fillText(starStr(stars[i]),0,30);
-    if(stars[i]){c.strokeStyle='#c0262f';c.lineWidth=5;c.strokeRect(-70,52,140,40);c.fillStyle='#c0262f';c.font='700 24px monospace';c.fillText('VYŘEŠENO',0,82)}c.restore()});
+  const pts=[];CASES.forEach((cs,i)=>{const cx=128+(i%4)*256,cy=165+Math.floor(i/4)*260;pts.push([cx,cy-95]);c.save();c.translate(cx,cy);c.rotate(((i*7)%5-2)*.025);c.fillStyle='rgba(0,0,0,.3)';c.fillRect(-100,-100,210,210);c.fillStyle=i>=3?'#e9e2d0':'#f3ecd9';c.fillRect(-105,-105,210,210);
+    c.fillStyle='#7a5a2e';c.font='700 18px monospace';c.textAlign='center';c.fillText('SPIS '+(i+1),0,-62);c.fillStyle='#1b1b1b';c.font='700 21px serif';c.fillText(cs.t,0,-25);c.fillStyle='#c99a00';c.font='30px serif';c.fillText(starStr(stars[i]),0,18);
+    if(stars[i]){c.strokeStyle='#c0262f';c.lineWidth=4;c.strokeRect(-62,45,124,34);c.fillStyle='#c0262f';c.font='700 20px monospace';c.fillText('VYŘEŠENO',0,70)}c.restore()});
   c.strokeStyle='#c0262f';c.lineWidth=4;c.beginPath();pts.forEach((p,i)=>i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1]));c.stroke();pts.forEach(p=>{c.fillStyle='#d7263d';c.beginPath();c.arc(p[0],p[1],11,0,7);c.fill()});
-  c.fillStyle='#fff';c.font='700 30px Nunito,sans-serif';c.textAlign='center';c.fillStyle='#1b1b1b';c.fillText('Ťukni a vyber si případ',w/2,h-40)})}
+  c.fillStyle='#fff';c.font='700 30px Nunito,sans-serif';c.textAlign='center';c.fillStyle='#1b1b1b';c.fillText('Ťukni a vyber si případ',w/2,h-18)})}
 
 function buildRoom(def){
   const th=def.th,m=def.map,WH=2.8,sc=new THREE.Scene();sc.background=new THREE.Color('#0f1316');sc.environment=ENV;
@@ -298,6 +391,8 @@ function buildRoom(def){
     const lp=new THREE.PointLight('#ffd89a',.35,3,2);lp.position.set(x+.35,1.08,z+.35);sc.add(lp);
     const pa=new THREE.Mesh(new THREE.PlaneGeometry(.21,.29),new THREE.MeshStandardMaterial({map:texT(8,null,'SPIS'),roughness:.9}));pa.rotation.set(-Math.PI/2,0,.2);pa.position.set(x+w-.45,.787,z+.55);sc.add(pa);
     box(new THREE.CylinderGeometry(.04,.035,.1,18),white,x+w-.25,.84,z+.3)});
+  for(let y=0;y<H;y++)for(let x=0;x<W;x++)if(m[y][x]==='X'){seed=x*11+y*3;const cm=new THREE.MeshStandardMaterial({map:img('wood.jpg',1,1),color:'#9a7048',roughness:.75});box(RB(.92,.92,.92,.03),cm,x+.5,.46,y+.5);[[.47,0],[-.47,0]].forEach(([o])=>box(new THREE.BoxGeometry(.02,.9,.94),solid('#5a3b22',.7),x+.5+o*.99,.46,y+.5));
+    if(rnd()<.6){const t=box(RB(.7,.6,.7,.03),cm,x+.5+(rnd()-.5)*.1,1.22,y+.5+(rnd()-.5)*.1);t.rotation.y=rnd()-.5}}
   for(let y=0;y<H;y++)for(let x=0;x<W;x++)if(m[y][x]==='P'){box(new THREE.CylinderGeometry(.2,.15,.42,24),new THREE.MeshStandardMaterial({color:'#b5652f',roughness:.85}),x+.5,.21,y+.5);box(new THREE.CylinderGeometry(.18,.18,.02,20),solid('#3b2a1e',1),x+.5,.41,y+.5,false);seed=x*5+y;
     for(let i=0;i<22;i++){const a=rnd()*Math.PI*2,r=.05+rnd()*.12,lf=new THREE.Mesh(new THREE.SphereGeometry(.09,10,8),solid(['#2d6a3e','#3d8a52','#4fa865','#2a5a35'][i%4],.6));lf.scale.set(.5,.12,1.6);lf.position.set(x+.5+Math.cos(a)*r*1.6,.5+rnd()*.55,y+.5+Math.sin(a)*r*1.6);lf.rotation.set(rnd()*.8-.4,a,rnd()*1.2-.6);lf.castShadow=true;sc.add(lf)}}
   return {sc,wood,woodD,white,steel,gold};
@@ -310,6 +405,7 @@ function item3(sh,e,env,def){
   if(sh==='book'){stand();const bk=b(RB(.26,.05,.34,.006),solid('#6e2a1f',.5),0,.725,0);bk.rotation.y=.3;const pg=b(new THREE.BoxGeometry(.25,.04,.32),solid('#f1ead6',.9),.008,.725,0);pg.rotation.y=.3;b(new THREE.BoxGeometry(.12,.002,.02),gold,0,.751,.05).rotation.y=.3}
   else if(sh==='paper'){stand();flat(.24,.32,texT(9),.702,-.25)}
   else if(sh==='photo'){stand();flat(.18,.21,ctex(256,300,(c,w,h)=>{c.fillStyle='#fbfaf6';c.fillRect(0,0,w,h);c.fillStyle=lg(c,0,20,0,220,['#9cc7e8','#7a9a6a']);c.fillRect(20,20,216,200);c.fillStyle='#333';for(let i=0;i<9;i++){c.beginPath();c.arc(36+i*23,160,10,0,7);c.fill();c.fillRect(28+i*23,168,16,32)}c.fillStyle='#555';c.font='20px monospace';c.fillText('14:15',150,270)}),.702,.3)}
+  else if(sh==='prints'){const pm=new THREE.MeshStandardMaterial({color:'#f4f1ea',roughness:1,transparent:true,opacity:.9});for(let i=0;i<6;i++){const f=new THREE.Mesh(new THREE.CircleGeometry(.05,16),pm);f.scale.set(.8,2.2,1);f.rotation.x=-Math.PI/2;f.position.set((i%2?.08:-.08),.004,-.45+i*.18);g.add(f)}const dust=new THREE.Mesh(new THREE.CircleGeometry(.3,20),new THREE.MeshBasicMaterial({color:'#ffffff',transparent:true,opacity:.25}));dust.rotation.x=-Math.PI/2;dust.position.set(0,.003,-.5);g.add(dust)}
   else if(sh==='crumbs'){seed=5;const cm=solid('#4a2512',.9);for(let i=0;i<22;i++){const s=new THREE.Mesh(new THREE.DodecahedronGeometry(.008+rnd()*.018),cm);s.position.set(rnd()*.6-.3,.01,rnd()*.6-.3);s.castShadow=true;g.add(s)}}
   else if(sh==='locker'){b(RB(.62,1.85,.5,.02),solid('#7d8a96',.42,.55),0,.925,0);for(let i=0;i<5;i++)b(new THREE.BoxGeometry(.36,.012,.01),solid('#4a535c'),0,1.6-i*.05,.252);
     const dl=b(new THREE.CylinderGeometry(.05,.05,.03,24),steel,.18,.95,.26);dl.rotation.x=Math.PI/2;b(new THREE.BoxGeometry(.03,.12,.01),solid('#ffd23f',.4),.18,1.15,.256)}
@@ -365,7 +461,7 @@ function start(def,i,solved){
   const ents=isOff?[{ty:'boss',x:def.boss.x,y:def.boss.y,done:greeted,asked:new Set(),L:def.boss},{ty:'board',x:def.board.x,y:def.board.y,done:true}]
     :[...def.sus.map((s,k)=>({ty:'n',k,x:s.x,y:s.y,done:false,asked:new Set(),L:{skin:SKIN[(k*2+i)%5],pants:'#2d3142',...s}})),...def.items.map((it,k)=>({ty:'i',k,x:it.x,y:it.y,done:false})),{ty:'q',x:def.puz.x,y:def.puz.y,done:false}];
   const touch=matchMedia('(pointer:coarse)').matches,total=stars.reduce((a,b)=>a+b,0);
-  app.innerHTML=`<div class="bar">${isOff?'<button class="pill w" id="chg">Postavička</button>':'<button class="pill w" id="bk">← Kancelář</button>'}<h2>${isOff?'Kancelář Lupa':def.t}</h2><button class="pill" id="nb">${isOff?'Spisy ★ '+total+'/9':'Zápisník'}</button></div>
+  app.innerHTML=`<div class="bar">${isOff?'<button class="pill w" id="chg">Postavička</button>':'<button class="pill w" id="bk">← Kancelář</button>'}<h2>${isOff?'Kancelář Lupa':def.t}</h2><button class="pill" id="nb">${isOff?'Spisy ★ '+total+'/'+CASES.length*3:'Zápisník'}</button></div>
   <div class="game" id="game"><div id="three"></div><canvas id="mini" width="160" height="120" aria-hidden="true"></canvas><div class="cross" id="cross"></div>
   <div class="joy" id="joy" hidden><div class="knob" id="knob"></div></div>${touch?'<div class="joyhint">Táhni prstem<br>a choď</div>':''}<div class="toast" id="toast" hidden></div><div class="dlg" id="dlg" hidden></div></div>
   <button class="act" id="act" disabled>${isOff?'Jdi za inspektorem Lupou':'Najdi osobu s ! nebo věc s ?'}</button>
@@ -389,7 +485,7 @@ function start(def,i,solved){
   $('#vo').onclick=()=>{voiceOn=!voiceOn;save();labels();if(!voiceOn)hush();else speak('Hlas je zapnutý.',1)};
   $('#snd').onclick=()=>{muted=!muted;save();labels()};
   if(isOff){$('#chg').onclick=maker;$('#nb').onclick=()=>{SFX.open();cases()};$('#rst').onclick=()=>{box.innerHTML='<h2>Začít znovu?</h2><p>Smažou se všechny hvězdy a případy budou zase zamčené. Tvoje postavička zůstane.</p><div class="end" style="gap:8px"><button class="btn" id="no">Ne</button><button class="btn" id="yes" style="background:var(--red);color:#fff">Ano, smazat</button></div>';modal.hidden=false;G.dlg=true;
-    $('#no').onclick=()=>{modal.hidden=true;G.dlg=false};$('#yes').onclick=()=>{stars=[0,0,0];greeted=false;save();office()}}}
+    $('#no').onclick=()=>{modal.hidden=true;G.dlg=false};$('#yes').onclick=()=>{stars=CASES.map(()=>0);greeted=false;save();office()}}}
   else{$('#bk').onclick=()=>office();$('#nb').onclick=()=>{SFX.open();notebook()}}
   $('#act').onclick=()=>{if(G.near)interact(G.near)};
   /* ovládání */
@@ -408,7 +504,7 @@ function start(def,i,solved){
   G.cleanup=()=>{G.alive=false;sc.traverse(o=>{if(o.geometry&&o.geometry!==HEADG)o.geometry.dispose()})};
   const hint=touch?'Prstem na levé straně obrazovky choď: nahoru jdeš dopředu, doleva a doprava se otáčíš. Pravou stranou se můžeš rozhlížet. Na osobu nebo věc ťukni, až budeš blízko.':'Šipka nahoru (nebo W) = dopředu, šipka dolů (S) = dozadu, šipky doleva a doprava (A, D) = otáčení. Na osobu nebo věc klikni, až budeš blízko (nebo zmáčkni E).';
   if(isOff){const b=def.boss;
-    if(solved!=null){const all=stars.every(s=>s>0);say(b.n,all?`Neuvěřitelné, detektive <b>${esc(ME.n)}</b>! Vyřešil jsi všechny případy. Jsi nejlepší detektiv, jakého jsem kdy měl.`:`Výborná práce, <b>${esc(ME.n)}</b>! Případ „${CASES[solved].t}“ je uzavřený. Na nástěnce už na tebe čeká další spis.`,[{t:'Díky, šéfe!'}],pitchOf(b),b.v);G.talker=ents[0]}
+    if(solved!=null){const last=solved===CASES.length-1;say(b.n,last?`Dokázal jsi to, <b>${esc(ME.n)}</b>! Chytil jsi Stína. Robert Mlha býval kdysi můj parťák. Nikdy jsem nevěřil, že ho někdo dopadne. Jsi nejlepší detektiv, jakého jsem kdy měl!`:solved===2?`Výborná práce, <b>${esc(ME.n)}</b>! Ale mám špatnou zprávu. Ve městě začal řádit zloděj, který si říká Stín. Na místě činu nechává černé karty s písmeny. Nové spisy už visí na nástěnce.`:solved>=3?`Skvělé, <b>${esc(ME.n)}</b>! Další černá karta je v našich rukou. Stín je nám čím dál blíž. Další spis čeká na nástěnce.`:`Výborná práce, <b>${esc(ME.n)}</b>! Případ „${CASES[solved].t}“ je uzavřený. Na nástěnce už na tebe čeká další spis.`,[{t:'Díky, šéfe!'}],pitchOf(b),b.v);G.talker=ents[0]}
     else if(!greeted)say('Kancelář Lupa',`Vítej v detektivní kanceláři Lupa, <b>${esc(ME.n)}</b>! Jdi za inspektorem Lupou, má pro tebe práci. <small><br><br>${hint}</small>`,[{t:'Jdu na to!'}],1)}
   else say('Spis č. '+(i+1),`Detektive <b>${esc(ME.n)}</b>, jsme na místě! ${def.intro} <small><br><br>${hint}</small>`,[{t:'Jdu na to!'}],1);
   updBar();window.scrollTo(0,0);
@@ -452,11 +548,11 @@ function bossTalk(e){
   const next=stars.findIndex(s=>!s),qs=[];
   if(next>=0)qs.push({t:'Jaký mám další případ?',q:1,f:()=>{const cs=CASES[next];say(b.n,`Spis číslo ${next+1}: ${cs.t}. ${cs.intro}`,[{t:'Beru ten případ!',f:()=>play(next)},{t:'Ještě počkám'}],pitchOf(b),b.v)}});
   qs.push({t:'Jak mám pátrat?',q:1,f:()=>say(b.n,'Vyslechni všechny podezřelé a ptej se jich. Prohledej místo činu a hledej věci s otazníkem. Všechno se ti zapíše do zápisníku. Když najdeš stopu, která nesedí s něčí výpovědí, zkus ho konfrontovat. A nakonec v zápisníku obviň viníka.',[{t:'Rozumím',f:()=>bossTalk(e)}],pitchOf(b),b.v)});
-  if(stars.some(s=>s>0))qs.push({t:'Jak si vedu?',q:1,f:()=>{const tot=stars.reduce((a,c)=>a+c,0);say(b.n,`Máš ${tot} hvězd z devíti. ${tot>=7?'Jsi opravdový mistr!':'Vedeš si dobře, ale zkus to bez nápověd a bez špatných obvinění, ať máš plný počet.'}`,[{t:'Díky',f:()=>bossTalk(e)}],pitchOf(b),b.v)}});
-  say(b.n+' · '+b.r,first?`Á, tady jsi, ${esc(ME.n)}! Jsem inspektor Lupa. Ve městě se dějí podivné věci a potřebuju bystrou hlavu. Spisy najdeš na nástěnce.`:'Co potřebuješ, detektive?',[...qs,{t:'Na shledanou'}],pitchOf(b),b.v);
+  if(stars.some(s=>s>0))qs.push({t:'Jak si vedu?',q:1,f:()=>{const tot=stars.reduce((a,c)=>a+c,0);say(b.n,`Máš ${tot} hvězd z ${CASES.length*3}. ${tot>=CASES.length*3-2?'Jsi opravdový mistr!':'Vedeš si dobře, ale zkus to bez nápověd a bez špatných obvinění, ať máš plný počet.'}`,[{t:'Díky',f:()=>bossTalk(e)}],pitchOf(b),b.v)}});
+  say(b.n+' · '+b.r,first?`Á, tady jsi, ${esc(ME.n)}! Jsem inspektor Lupa. Ve městě se dějí podivné věci a potřebuju bystrou hlavu. Spisy najdeš na nástěnce.`:'Co potřebuješ, detektive?'+(stars[2]>0&&!stars[CASES.length-1]?' Pozor, Stín pořád řádí ve městě. Sbírej jeho černé karty, z písmen složíme jeho jméno.':''),[...qs,{t:'Na shledanou'}],pitchOf(b),b.v);
 }
 function cases(){
-  hush();box.innerHTML=`<h2>Spisy na nástěnce</h2><div class="cases-m">${CASES.map((c,i)=>{const op=i===0||stars[i-1]>0;return `<button class="file" data-i="${i}" ${op?'':'disabled'}>${op?'':'<span class="lock">Zamčeno</span>'}<div class="n">Spis č. ${i+1} · ${c.d}</div><h2>${c.t}</h2><p class="d">${c.place}</p><div class="st">${starStr(stars[i])}</div>${stars[i]?'<span class="stamp">VYŘEŠENO</span>':''}</button>`}).join('')}</div><div class="end"><button class="btn" id="cl">Zavřít</button></div>`;
+  hush();box.innerHTML=`<h2>Spisy na nástěnce</h2>${stars[2]>0?`<p><b>Černé karty Stína:</b> <span style="font:700 22px monospace;letter-spacing:6px">${['M','L','H','A'].map((l,j)=>stars[3+j]?l:'_').join('')}</span></p>`:''}<div class="cases-m">${CASES.map((c,i)=>{const op=i===0||stars[i-1]>0;return `<button class="file" data-i="${i}" ${op?'':'disabled'}>${op?'':'<span class="lock">Zamčeno</span>'}<div class="n">Spis č. ${i+1} · ${c.d}</div><h2>${c.t}</h2><p class="d">${c.place}</p><div class="st">${starStr(stars[i])}</div>${stars[i]?'<span class="stamp">VYŘEŠENO</span>':''}</button>`}).join('')}</div><div class="end"><button class="btn" id="cl">Zavřít</button></div>`;
   modal.hidden=false;G.dlg=true;box.querySelectorAll('.file').forEach(b=>b.onclick=()=>{SFX.open();play(+b.dataset.i)});$('#cl').onclick=()=>{modal.hidden=true;G.dlg=!$('#dlg').hidden}}
 function talk(e){
   const s=G.c.sus[e.k],first=!e.done;e.done=true;G.talker=e;updBar();
