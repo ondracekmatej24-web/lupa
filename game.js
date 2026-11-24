@@ -174,6 +174,50 @@ open:()=>tone(320,.09,'triangle',.07,0,640),
 drama:()=>{tone(392,.2,'sawtooth',.04);tone(370,.2,'sawtooth',.04,.2);tone(330,.45,'sawtooth',.05,.4)},
 pick:()=>tone(880,.06,'triangle',.06,0,1200)};
 
+const EXTRA=[
+{key:['i0','q'],add:{n:"Obal od čokolády",c:"Na lavici u kuchyně leží obal od čokolády s fixou napsaným jménem TONDA.",sh:"paper",x:12,y:2},
+ cf:{0:[3,"U kuchyně ležel obal od čokolády s tvým jménem!","To je od včerejška! Dneska jsem byl celou přestávku v tělocvičně, pan učitel to potvrdí."],
+     1:[1,"Knihovna potvrzuje, že jsi v 10:05 vracela knihu.","No vidíš! Říkala jsem to."]}},
+{key:['i1','q'],add:{n:"Kapesník pod rámem",c:"Pod prázdným rámem leží kapesník s vyšitým písmenem J.",sh:"paper",x:5,y:10},
+ cf:{0:[3,"Pod prázdným rámem ležel kapesník s písmenem J!","Ten mi vypadl ráno při prohlídce s jinou skupinou. Ve 14:15 jsem byla s dětmi v přízemí, je to na fotce."],
+     2:[0,"Podle pokladny jste přišel až ve 14:40.","Přesně tak, autobus měl zpoždění. Obrazy mě stejně nezajímají."]}},
+{key:['q','i0'],add:{n:"Pracovní rukavice",c:"U stolu leží pracovní rukavice s vyšitým písmenem F.",sh:"paper",x:12,y:8},
+ cf:{1:[3,"U stolu ležela tvoje rukavice!","Jasně, v ní jsem šrouboval Rexovi kola. Když jsem odcházel, byl Rex ještě celý."],
+     2:[0,"Na šroubováku je oranžový lak. Nosíš lak na nehty?","Dneska mám modrý, podívej. Oranžový nosím jen na diskotéky."],
+     3:[2,"Všichni jste odešli mezi 16:00 a 16:10. Kdy jsi šel ty?","Se Sofií jsme zamykali skříň s nářadím a odcházeli jsme spolu v 16:10."]}},
+{key:['i1'],add:{n:"Palička od bubnu",c:"U skříně s notami leží bubenická palička.",sh:"screw",x:12,y:9},
+ cf:{1:[0,"Podle knihy údržby jste opravoval pojistky v 17:11.","Ano, a elektrikář to podepsal. Ve sklepě není sál vidět."],
+     2:[3,"U skříně s notami ležela tvoje palička!","Tu jsem tam nechal ráno při zkoušce. O přestávce jsem byl v bufetu, mám účtenku."]}},
+{key:['i0','i2'],add:{n:"Drobky u pokladny",c:"Kolem místa po pokladně jsou drobky od rohlíků.",sh:"crumbs",x:10,y:2},
+ cf:{0:[0,"Stopy jsou od mouky a vy jste pekař!","Mouku mám všude. Ale ty stopy mají velikost 38 a já mám pětačtyřicítky."],
+     2:[3,"U pokladny jsou drobky od rohlíků, které rozvážíš!","Rohlíky jsou tu všude, je to pekárna! A já chodím jen předními dveřmi, stopy vedou k zadním."]}},
+{key:['i1','i0'],add:{n:"Batoh u trezoru",c:"Kousek od trezoru leží batoh se jmenovkou MATYÁŠ.",sh:"paper",x:5,y:6},
+ cf:{0:[2,"Telefon potvrzuje, že jste do 18:06 mluvila s elektrikářem.","Ano. Elektrikář vám to může potvrdit."],
+     1:[3,"Tvůj batoh ležel kousek od trezoru!","Nechávám ho tam vždycky, když řadím knížky. Kartu jsem včera ztratil, je to zapsané."]}},
+{key:['i2'],add:{n:"Chlupy u vitríny",c:"U vitríny leží hnědé chlupy z kostýmu medvěda.",sh:"crumbs",x:10,y:2},
+ puz:{q:"Zámek skříňky má tři číslice a vzkaz: „První číslice je počet hráčů jednoho volejbalového týmu na hřišti. Druhá je o 3 menší než první. Třetí je součet prvních dvou.“ Jaký je kód?",a:["639"]},
+ cf:{1:[1,"Zápis z porady potvrzuje, že jste byl u ředitele.","Ředitel to podepsal. Od 15:00 do 15:30 jsem z kanceláře nevyšel."],
+     2:[3,"U vitríny jsou chlupy z tvého kostýmu!","Ve dvě jsem se tam fotil s pohárem. V 15:20 jsem tancoval na hřišti, je to na fotce."]}},
+{key:['i1','i0','q'],add:{n:"Zelená bunda",c:"Na bedně u vrátnice visí zelená pracovní bunda.",sh:"paper",x:3,y:2},
+ intro:"Stín poslal inspektoru Lupovi dopis: „Chyťte mě, jestli to dokážete. Čekám ve staré továrně.“ Máš všechny černé karty, které Stín nechal na místech činu (najdeš je v seznamu spisů). V továrně jsou čtyři lidé a jeden z nich je Stín v přestrojení!",
+ cf:{0:[3,"Na bedně visí zelená bunda. Je vaše?","Je, nosím ji jen v zimě. A jsem pravák, podívej, jak píšu."],
+     2:[0,"Našla jsem obal od mátových bonbonů. Nejsou vaše?","Mátu nesnáším. Ale ten fotograf je cucá pořád."],
+     3:[2,"V seznamu návštěv nejste. Jak jste se sem dostal?","Pošťák do seznamu nepíše. Rudolf mě pustil, nesu jen dopis."]}}];
+EXTRA.forEach((e,i)=>{const c=CASES[i];c.items.push(e.add);Object.entries(e.cf).forEach(([k,v])=>{c.sus[k].cf=v});c.key=e.key;if(e.puz)Object.assign(c.puz,e.puz);if(e.intro)c.intro=e.intro});
+const BADGES=[
+ {id:'first',n:'První případ',d:'Vyřeš svůj první případ.'},
+ {id:'nohint',n:'Bez nápovědy',d:'Vyřeš případ bez nápovědy.'},
+ {id:'clean',n:'Napoprvé správně',d:'Obviň správného viníka hned napoprvé.'},
+ {id:'ask',n:'Mistr výslechu',d:'Polož v jednom případu všechny otázky všem podezřelým.'},
+ {id:'eye',n:'Bystré oko',d:'Najdi v případu všechny stopy dřív, než někoho obviníš.'},
+ {id:'puz',n:'Luštitel',d:'Vyřeš hádanku napoprvé.'},
+ {id:'perfect',n:'Tři hvězdy',d:'Získej v jednom případu všechny tři hvězdy.'},
+ {id:'stin',n:'Lovec Stína',d:'Dopadni tajemného Stína.'},
+ {id:'all',n:'Legenda kanceláře',d:'Získej ve všech případech tři hvězdy.'}];
+const RANKS=[[0,'Nováček'],[6,'Pomocník detektiva'],[12,'Detektiv'],[18,'Vrchní detektiv'],[23,'Inspektor']];
+const rankOf=t=>RANKS.filter(r=>t>=r[0]).pop()[1];
+let badges=new Set();try{const b=JSON.parse(localStorage.getItem('lupa-badges'));if(Array.isArray(b))badges=new Set(b.filter(x=>BADGES.some(y=>y.id===x)))}catch(e){}
+const saveBadges=()=>{try{localStorage.setItem('lupa-badges',JSON.stringify([...badges]))}catch(e){}};
 const OFFICE={t:"Kancelář Lupa",th:{f:"wood",tint:"#a8774f",wall:"#d9d0c2",cap:"#3b2f2a",rug:"#2f4a3a",brick:1},
 map:["################","#SSS.........PP#","#..............#","#.....DDD......#","#..............#","#...rrrrrr.....#","#...rrrrrr...CC#","#...rrrrrr.....#","#..............#","#.TT...........#","#..............#","#######..#######"],
 start:[7,10],
@@ -465,7 +509,7 @@ function start(def,i,solved){
   <div class="game" id="game"><div id="three"></div><canvas id="mini" width="160" height="120" aria-hidden="true"></canvas><div class="cross" id="cross"></div>
   <div class="joy" id="joy" hidden><div class="knob" id="knob"></div></div>${touch?'<div class="joyhint">Táhni prstem<br>a choď</div>':''}<div class="toast" id="toast" hidden></div><div class="dlg" id="dlg" hidden></div></div>
   <button class="act" id="act" disabled>${isOff?'Jdi za inspektorem Lupou':'Najdi osobu s ! nebo věc s ?'}</button>
-  <div class="tools"><button class="pill s" id="vw"></button><button class="pill s" id="vo"></button><button class="pill s" id="snd"></button>${isOff?'<button class="pill s" id="rst">Začít znovu</button>':''}</div>`;
+  <div class="tools"><button class="pill s" id="vw"></button><button class="pill s" id="vo"></button><button class="pill s" id="snd"></button>${isOff?'<button class="pill s" id="bdg">Odznaky</button><button class="pill s" id="rst">Začít znovu</button>':''}</div>`;
   R();const env=buildRoom(def),sc=env.sc,cam=new THREE.PerspectiveCamera(66,1,.03,60);cam.rotation.order='YXZ';
   const picks=[];
   ents.forEach(e=>{let obj;
@@ -484,8 +528,8 @@ function start(def,i,solved){
   $('#vw').onclick=()=>{camMode=camMode==='fp'?'tp':'fp';save();labels();SFX.click()};
   $('#vo').onclick=()=>{voiceOn=!voiceOn;save();labels();if(!voiceOn)hush();else speak('Hlas je zapnutý.',1)};
   $('#snd').onclick=()=>{muted=!muted;save();labels()};
-  if(isOff){$('#chg').onclick=maker;$('#nb').onclick=()=>{SFX.open();cases()};$('#rst').onclick=()=>{box.innerHTML='<h2>Začít znovu?</h2><p>Smažou se všechny hvězdy a případy budou zase zamčené. Tvoje postavička zůstane.</p><div class="end" style="gap:8px"><button class="btn" id="no">Ne</button><button class="btn" id="yes" style="background:var(--red);color:#fff">Ano, smazat</button></div>';modal.hidden=false;G.dlg=true;
-    $('#no').onclick=()=>{modal.hidden=true;G.dlg=false};$('#yes').onclick=()=>{stars=CASES.map(()=>0);greeted=false;save();office()}}}
+  if(isOff){$('#chg').onclick=maker;$('#bdg').onclick=()=>{SFX.open();badgeView()};$('#nb').onclick=()=>{SFX.open();cases()};$('#rst').onclick=()=>{box.innerHTML='<h2>Začít znovu?</h2><p>Smažou se všechny hvězdy i odznaky a případy budou zase zamčené. Tvoje postavička zůstane.</p><div class="end" style="gap:8px"><button class="btn" id="no">Ne</button><button class="btn" id="yes" style="background:var(--red);color:#fff">Ano, smazat</button></div>';modal.hidden=false;G.dlg=true;
+    $('#no').onclick=()=>{modal.hidden=true;G.dlg=false};$('#yes').onclick=()=>{stars=CASES.map(()=>0);badges=new Set();saveBadges();greeted=false;save();office()}}}
   else{$('#bk').onclick=()=>office();$('#nb').onclick=()=>{SFX.open();notebook()}}
   $('#act').onclick=()=>{if(G.near)interact(G.near)};
   /* ovládání */
@@ -548,7 +592,7 @@ function bossTalk(e){
   const next=stars.findIndex(s=>!s),qs=[];
   if(next>=0)qs.push({t:'Jaký mám další případ?',q:1,f:()=>{const cs=CASES[next];say(b.n,`Spis číslo ${next+1}: ${cs.t}. ${cs.intro}`,[{t:'Beru ten případ!',f:()=>play(next)},{t:'Ještě počkám'}],pitchOf(b),b.v)}});
   qs.push({t:'Jak mám pátrat?',q:1,f:()=>say(b.n,'Vyslechni všechny podezřelé a ptej se jich. Prohledej místo činu a hledej věci s otazníkem. Všechno se ti zapíše do zápisníku. Když najdeš stopu, která nesedí s něčí výpovědí, zkus ho konfrontovat. A nakonec v zápisníku obviň viníka.',[{t:'Rozumím',f:()=>bossTalk(e)}],pitchOf(b),b.v)});
-  if(stars.some(s=>s>0))qs.push({t:'Jak si vedu?',q:1,f:()=>{const tot=stars.reduce((a,c)=>a+c,0);say(b.n,`Máš ${tot} hvězd z ${CASES.length*3}. ${tot>=CASES.length*3-2?'Jsi opravdový mistr!':'Vedeš si dobře, ale zkus to bez nápověd a bez špatných obvinění, ať máš plný počet.'}`,[{t:'Díky',f:()=>bossTalk(e)}],pitchOf(b),b.v)}});
+  if(stars.some(s=>s>0))qs.push({t:'Jak si vedu?',q:1,f:()=>{const tot=stars.reduce((a,c)=>a+c,0);say(b.n,`Tvoje hodnost je ${rankOf(tot)}. Máš ${tot} hvězd z ${CASES.length*3} a ${badges.size} odznaků z ${BADGES.length}. ${tot>=CASES.length*3-2?'Jsi opravdový mistr!':'Vedeš si dobře, ale zkus to bez nápověd a bez špatných obvinění, ať máš plný počet.'}`,[{t:'Díky',f:()=>bossTalk(e)}],pitchOf(b),b.v)}});
   say(b.n+' · '+b.r,first?`Á, tady jsi, ${esc(ME.n)}! Jsem inspektor Lupa. Ve městě se dějí podivné věci a potřebuju bystrou hlavu. Spisy najdeš na nástěnce.`:'Co potřebuješ, detektive?'+(stars[2]>0&&!stars[CASES.length-1]?' Pozor, Stín pořád řádí ve městě. Sbírej jeho černé karty, z písmen složíme jeho jméno.':''),[...qs,{t:'Na shledanou'}],pitchOf(b),b.v);
 }
 function cases(){
@@ -576,7 +620,7 @@ function interact(e){
   else{SFX.open();say(c.puz.n,c.puz.q+'<form class="row" id="pf" style="margin-top:10px"><input id="pa" autocomplete="off" aria-label="Tvoje odpověď" placeholder="Tvoje odpověď"><button class="btn">Ověřit</button></form><div class="msg" id="pm" aria-live="polite"></div>',[{t:'Zavřít'}],1);
     $('#pf').onsubmit=ev=>{ev.preventDefault();const v=$('#pa').value.trim().toLowerCase();
       if(c.puz.a.includes(v)){e.done=true;updBar();SFX.clue();say(c.puz.n,'<b>Správně!</b> '+c.puz.r+'<small><br>Zapsáno do zápisníku.</small>',null,1)}
-      else{SFX.wrong();$('#pm').textContent=v?'To není ono. Zkus to znovu!':'Napiš odpověď.';speak(v?'To není ono. Zkus to znovu!':'Napiš odpověď.',1)}};
+      else{SFX.wrong();G.puzFail=(G.puzFail||0)+(v?1:0);$('#pm').textContent=v?'To není ono. Zkus to znovu!':'Napiš odpověď.';speak(v?'To není ono. Zkus to znovu!':'Napiš odpověď.',1)}};
     setTimeout(()=>{const a=$('#pa');if(a)a.focus()},50)}
 }
 function say(title,html,btns,pitch,blip){
@@ -592,33 +636,53 @@ function say(title,html,btns,pitch,blip){
 }
 function updBar(){const g=G;if(g.isOff)return;const cl=g.ents.filter(e=>e.ty!=='n'&&e.done).length,tot=g.ents.filter(e=>e.ty!=='n').length;$('#nb').textContent=`Zápisník ${cl}/${tot}`}
 const score=()=>Math.max(1,3-(G.hint?1:0)-G.wrong);
-function notebook(){
-  const g=G,c=g.c,talked=g.ents.filter(e=>e.ty==='n'&&e.done),all=talked.length===c.sus.length;hush();
-  const clues=[...g.ents.filter(e=>e.ty==='i'&&e.done).map(e=>c.items[e.k].c),...(g.ents.find(e=>e.ty==='q').done?[c.puz.r]:[])];
+function notebook(sel){
+  const g=G,c=g.c,talked=g.ents.filter(e=>e.ty==='n'&&e.done),all=talked.length===c.sus.length;hush();sel=sel||{};
+  const ev=[...g.ents.filter(e=>e.ty==='i'&&e.done).map(e=>({id:'i'+e.k,t:c.items[e.k].c,n:c.items[e.k].n})),...(g.ents.find(e=>e.ty==='q').done?[{id:'q',t:c.puz.r,n:c.puz.n}]:[])];
   const qa=(e,j)=>{const s=c.sus[e.k],x=j==='c'?[s.cf[1],s.cf[2]]:s.q[j];return `<li>${x[0]} → „${x[1]}“</li>`};
   box.innerHTML=`<h2>Zápisník detektiva ${esc(ME.n)}</h2>
   <h3>Výpovědi a rozhovory</h3>${talked.length?'<ul>'+talked.map(e=>`<li><b>${c.sus[e.k].n}:</b> „${c.sus[e.k].s}“${e.asked.size?'<ul>'+[...e.asked].map(j=>qa(e,j)).join('')+'</ul>':''}</li>`).join('')+'</ul>':'<p class="empty">Zatím jsi s nikým nemluvil. Najdi osoby s vykřičníkem.</p>'}
-  <h3>Stopy</h3>${clues.length?'<ul>'+clues.map(t=>`<li>${t}</li>`).join('')+'</ul>':'<p class="empty">Zatím žádné stopy. Hledej věci s otazníkem.</p>'}
+  <h3>Stopy</h3>${ev.length?'<ul>'+ev.map(x=>`<li><b>${x.n}:</b> ${x.t}</li>`).join('')+'</ul>':'<p class="empty">Zatím žádné stopy. Hledej věci s otazníkem.</p>'}
   <h3>Nápověda</h3>${g.hint?`<p>${c.hint}</p>`:'<button class="hintb" id="hb">Ukázat nápovědu (−1 hvězda)</button>'}
-  <h3>Kdo je viník?</h3>${all?'':'<p class="empty">Nejdřív promluv se všemi podezřelými.</p>'}
-  <div class="acc">${c.sus.map((s,k)=>`<button data-a="${k}" ${all?'':'disabled'}>Obvinit: ${s.n}</button>`).join('')}</div>
-  <p class="empty" style="margin-top:10px">Za vyřešení teď dostaneš ${starStr(score())}</p>
-  <div class="end"><button class="btn" id="cl">Zpět do hry</button></div>`;
+  <h3>Nástěnka důkazů</h3>${all?'<p class="empty">Vyber podezřelého a potom důkaz, který ho usvědčí. Pozor, některé stopy jsou falešné!</p>':'<p class="empty">Nejdřív promluv se všemi podezřelými.</p>'}
+  <div class="acc">${c.sus.map((s,k)=>`<button class="pick" data-a="${k}" aria-pressed="${sel.k===k}" ${all?'':'disabled'}>${s.n}</button>`).join('')}</div>
+  ${all?`<div class="evs">${ev.length?ev.map(x=>`<button class="ev" data-e="${x.id}" aria-pressed="${sel.e===x.id}"><b>${x.n}</b><br>${x.t}</button>`).join(''):'<p class="empty">Zatím nemáš žádný důkaz. Prohledej místo činu.</p>'}</div>
+  <p class="sum">${sel.k!=null&&sel.e?`Obviněný: <b>${c.sus[sel.k].n}</b> · Důkaz: <b>${ev.find(x=>x.id===sel.e).n}</b>`:''}</p>`:''}
+  <p class="empty">Za vyřešení teď dostaneš ${starStr(score())}</p>
+  <div class="end" style="gap:8px">${all?`<button class="btn red" id="ga" ${sel.k!=null&&sel.e?'':'disabled'}>Obvinit</button>`:''}<button class="btn" id="cl">Zpět do hry</button></div>`;
   modal.hidden=false;g.dlg=true;
-  $('#cl').onclick=()=>{SFX.click();hush();modal.hidden=true;g.dlg=!$('#dlg').hidden};$('#cl').focus();
-  const hb=$('#hb');if(hb)hb.onclick=()=>{g.hint=true;SFX.open();notebook();speak(c.hint,1)};
-  box.querySelectorAll('.acc button').forEach(b=>b.onclick=()=>accuse(+b.dataset.a));
+  $('#cl').onclick=()=>{SFX.click();hush();modal.hidden=true;g.dlg=!$('#dlg').hidden};
+  const hb=$('#hb');if(hb)hb.onclick=()=>{g.hint=true;SFX.open();notebook(sel);speak(c.hint,1)};
+  box.querySelectorAll('.pick').forEach(b=>b.onclick=()=>{SFX.pick();const st=box.scrollTop;notebook({...sel,k:+b.dataset.a});box.scrollTop=st});
+  box.querySelectorAll('.ev').forEach(b=>b.onclick=()=>{SFX.pick();const st=box.scrollTop;notebook({...sel,e:b.dataset.e});box.scrollTop=st});
+  const ga=$('#ga');if(ga)ga.onclick=()=>accuse(sel.k,sel.e);
 }
-function accuse(k){
+function accuse(k,evid){
   const g=G,c=g.c;
-  if(k===c.cul){const sc=score();stars[g.i]=Math.max(stars[g.i],sc);save();SFX.win();
-    box.innerHTML=`<h2>Případ vyřešen!</h2><div class="big">${starStr(sc)}</div><p>Skvělá práce, detektive <b>${esc(ME.n)}</b>!</p><p><b>Viník: ${c.sus[k].n}.</b> ${c.why}</p><div class="end"><button class="btn" id="ok">Zpět do kanceláře</button></div>`;
-    setTimeout(()=>speak('Případ vyřešen! Viník je '+c.sus[k].n+'. '+c.why,1),900);
+  if(k===c.cul&&c.key.includes(evid)){const sc=score();stars[g.i]=Math.max(stars[g.i],sc);save();SFX.win();
+    const nb=[],earn=id=>{if(!badges.has(id)){badges.add(id);nb.push(BADGES.find(b=>b.id===id).n)}};
+    earn('first');if(!g.hint)earn('nohint');if(!g.wrong)earn('clean');if(sc===3)earn('perfect');
+    if(g.ents.filter(e=>e.ty==='n').every(e=>c.sus[e.k].q.every((_,j)=>e.asked.has(j))))earn('ask');
+    if(g.ents.filter(e=>e.ty!=='n').every(e=>e.done))earn('eye');
+    if(g.ents.find(e=>e.ty==='q').done&&!g.puzFail)earn('puz');
+    if(g.i===CASES.length-1)earn('stin');if(stars.every(s=>s===3))earn('all');saveBadges();
+    box.innerHTML=`<h2>Případ vyřešen!</h2><div class="big">${starStr(sc)}</div><p>Skvělá práce, detektive <b>${esc(ME.n)}</b>!</p><p><b>Viník: ${c.sus[k].n}.</b> ${c.why}</p>${nb.length?`<div class="newb">${nb.map(n=>`<span class="badge on">🏅 ${n}</span>`).join('')}</div>`:''}<div class="end"><button class="btn" id="ok">Zpět do kanceláře</button></div>`;
+    setTimeout(()=>speak('Případ vyřešen! Viník je '+c.sus[k].n+'. '+c.why+(nb.length?' Získal jsi nový odznak: '+nb.join(', ')+'.':''),1),900);
     $('#ok').onclick=()=>{hush();modal.hidden=true;office(g.i)}}
-  else{g.wrong++;SFX.wrong();const t=`${c.sus[k].n} má dobré vysvětlení. Projdi znovu stopy a rozhovory a hledej, kdo říká něco, co nesouhlasí se stopami.`;
-    box.innerHTML=`<h2>Tohle nesedí…</h2><p>${t} Zkus se ptát víc!</p><div class="end"><button class="btn" id="ok">Pátrám dál</button></div>`;speak(t,1);
+  else if(k===c.cul){g.wrong++;SFX.wrong();const t=`Podezřelý ${c.sus[k].n}: dobré tušení, ale tenhle důkaz nestačí. Najdi stopu, která přímo ukazuje, že lže.`;
+    box.innerHTML=`<h2>Důkaz nestačí</h2><p>${t}</p><div class="end"><button class="btn" id="ok">Hledat lepší důkaz</button></div>`;speak(t,1);
+    $('#ok').onclick=()=>{hush();notebook({k})}}
+  else{g.wrong++;SFX.wrong();const t=`${c.sus[k].n} má dobré vysvětlení. Projdi znovu stopy a rozhovory. Některé stopy jsou falešné a vedou na nevinné.`;
+    box.innerHTML=`<h2>Tohle nesedí…</h2><p>${t} Zkus konfrontovat podezřelé.</p><div class="end"><button class="btn" id="ok">Pátrám dál</button></div>`;speak(t,1);
     $('#ok').onclick=()=>{hush();modal.hidden=true;g.dlg=!$('#dlg').hidden}}
   $('#ok').focus();
+}
+function badgeView(){
+  const tot=stars.reduce((a,b)=>a+b,0),r=rankOf(tot),nx=RANKS.find(x=>x[0]>tot);
+  box.innerHTML=`<h2>Odznaky a hodnost</h2><p>Hodnost: <b>${r}</b> · hvězdy ${tot}/${CASES.length*3}${nx?` · do hodnosti „${nx[1]}“ chybí ${nx[0]-tot} ★`:''}</p>
+  <div class="bgrid">${BADGES.map(b=>`<div class="badge ${badges.has(b.id)?'on':''}"><b>${badges.has(b.id)?'🏅':'🔒'} ${b.n}</b><small>${b.d}</small></div>`).join('')}</div>
+  <div class="end"><button class="btn" id="cl">Zavřít</button></div>`;
+  modal.hidden=false;G.dlg=true;$('#cl').onclick=()=>{modal.hidden=true;G.dlg=!$('#dlg').hidden};
 }
 addEventListener('keydown',e=>{if(!G||e.target.tagName==='INPUT')return;
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','KeyW','KeyA','KeyS','KeyD'].includes(e.code)){G.keys[e.code]=true;if(!G.dlg)e.preventDefault()}

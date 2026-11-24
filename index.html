@@ -136,6 +136,17 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--note);outline-o
  .dlg{left:max(8px,env(safe-area-inset-left));right:max(8px,env(safe-area-inset-right));bottom:8px;max-height:70%}
  .joyhint{left:max(20px,env(safe-area-inset-left))}
 }
+.acc .pick{background:#fff;color:#1b1b1b;border:2px solid #1b1b1b}
+.acc .pick[aria-pressed=true]{background:var(--red);color:#fff;border-color:var(--red)}
+.evs{display:grid;gap:8px;margin-top:12px}
+.ev{text-align:left;background:#fff6cf;color:#1b1b1b;border:2px solid #e3c65a;border-radius:6px;padding:10px 12px;font-size:15px;min-height:44px;box-shadow:0 2px 4px #0002}
+.ev[aria-pressed=true]{border-color:var(--red);box-shadow:0 0 0 3px var(--red)}
+.sum{min-height:1.4em;margin:10px 0 0}
+.btn.red{background:var(--red);color:#fff}.btn:disabled{opacity:.4;cursor:not-allowed}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:10px}
+.badge{display:grid;gap:4px;padding:10px;border-radius:8px;background:var(--paper2);color:var(--muted);border:2px solid var(--line)}
+.badge.on{color:var(--ink);border-color:#e0a800;background:light-dark(#fff6d6,#3a3218)}
+.badge small{font-size:13px}.newb{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.newb .badge{display:inline-block;font-weight:800}
 </style>
 </head>
 <body>
